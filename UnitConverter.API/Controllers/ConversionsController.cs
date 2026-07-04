@@ -18,8 +18,24 @@ namespace UnitConverter.API.Controllers
         [HttpPost("convert")]
         public IActionResult Convert([FromBody] ConversionRequest request)
         {
-            var result = conversionService.Convert(request.category, request.FromUnit, request.ToUnit, request.Value);
-            return Ok(result);
+            double result = conversionService.Convert(request.category, request.FromUnit, request.ToUnit, request.Value);
+            
+            ConversionResponse conversionResponse = new ConversionResponse
+            {
+                OriginalValue = request.Value,
+                FromUnit = request.FromUnit,
+                ToUnit = request.ToUnit,
+                ConvertedValue = result
+            };
+
+            ApiResponse<ConversionResponse> response = new ApiResponse<ConversionResponse>
+            {
+                IsSuccess = true,
+                Message = "Conversion successful",
+                Data = conversionResponse
+            };
+
+            return Ok(response);
         }
     }
 }
