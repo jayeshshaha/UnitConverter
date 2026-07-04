@@ -1,0 +1,17 @@
+bin/
+obj/
+**/bin/
+**/obj/
+.vs/
+.git/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.cache
+**/*.db
+**/*.log
+.nuget/
+**/*.zip
+docker-compose.*
+.env
