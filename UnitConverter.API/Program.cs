@@ -19,7 +19,7 @@ namespace UnitConverter.API
             builder.Services.AddControllers();
 
             builder.Services.AddScoped<IConversionStrategy, LengthConversionStrategy>();
-
+            builder.Services.AddScoped<IConversionStrategy, TemperatureConversionStrategy>();
             builder.Services.AddScoped<IConversionService, ConversionService>();
 
             var app = builder.Build();
