@@ -1,5 +1,8 @@
 
 using UnitConverter.API.Extensions;
+using UnitConverter.Services.Interfaces;
+using UnitConverter.Services.Services;
+using UnitConverter.Services.Strategies;
 
 namespace UnitConverter.API
 {
@@ -13,6 +16,10 @@ namespace UnitConverter.API
             builder.Services.AddSwaggerExtension();
 
             builder.Services.AddControllers();
+
+            builder.Services.AddScoped<IConversionStrategy, LengthConversionStrategy>();
+
+            builder.Services.AddScoped<IConversionService, ConversionService>();
 
             var app = builder.Build();
 
