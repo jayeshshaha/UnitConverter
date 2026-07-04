@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="UnitConverter.API/UnitConverter.API.csproj" />
+  <Project Path="UnitConverter.Domain/UnitConverter.Domain.csproj" />
+  <Project Path="UnitConverter.Services/UnitConverter.Services.csproj" />
+</Solution>
