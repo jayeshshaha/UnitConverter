@@ -1,4 +1,5 @@
 ﻿using UnitConverter.Domain.ConversionRules;
+using UnitConverter.Domain.Exceptions;
 
 namespace UnitConverter.Domain.Converters
 {
@@ -11,12 +12,12 @@ namespace UnitConverter.Domain.Converters
         {
             if (!UnitFactors.TryGetValue(fromUnit, out var metersPerFromUnit))
             {
-                throw new NotSupportedException($"Unsupported source unit: {fromUnit}");
+                throw new UnsupportedUnitException(fromUnit);
             }
 
             if (!UnitFactors.TryGetValue(toUnit, out var metersPerToUnit))
             {
-                throw new NotSupportedException($"Unsupported target unit: {toUnit}");
+                throw new UnsupportedUnitException(toUnit);
             }
 
             double valueInMeters = value * metersPerFromUnit;

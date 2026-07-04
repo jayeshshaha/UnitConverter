@@ -1,5 +1,6 @@
 
 using UnitConverter.API.Extensions;
+using UnitConverter.API.Middleware;
 using UnitConverter.Services.Interfaces;
 using UnitConverter.Services.Services;
 using UnitConverter.Services.Strategies;
@@ -22,6 +23,8 @@ namespace UnitConverter.API
             builder.Services.AddScoped<IConversionService, ConversionService>();
 
             var app = builder.Build();
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
