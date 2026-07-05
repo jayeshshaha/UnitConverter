@@ -6,8 +6,7 @@ namespace UnitConverter.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ConversionsController(IConversionService conversionService) : ControllerBase
-
+    public class ConversionsController(IConversionService conversionService, ILogger<ConversionsController> logger) : ControllerBase
     {
         [HttpGet]
         public IActionResult Test()
@@ -34,6 +33,8 @@ namespace UnitConverter.API.Controllers
                 Message = "Conversion successful",
                 Data = conversionResponse
             };
+
+            logger.LogInformation("Conversion completed successfully: {Result}", result);
 
             return Ok(response);
         }
