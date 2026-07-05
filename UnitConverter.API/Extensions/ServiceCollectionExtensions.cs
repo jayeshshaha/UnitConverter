@@ -19,6 +19,7 @@ namespace UnitConverter.API.Extensions
             services.AddScoped<IConversionService, ConversionService>();
             services.AddScoped<IConversionStrategy, LengthConversionStrategy>();
             services.AddScoped<IConversionStrategy, TemperatureConversionStrategy>();
+            services.AddScoped<IConversionStrategy, WeightConversionStrategy>();
 
             return services;
         }
