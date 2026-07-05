@@ -1,9 +1,6 @@
 
 using UnitConverter.API.Extensions;
 using UnitConverter.API.Middleware;
-using UnitConverter.Services.Interfaces;
-using UnitConverter.Services.Services;
-using UnitConverter.Services.Strategies;
 
 namespace UnitConverter.API
 {
@@ -20,6 +17,8 @@ namespace UnitConverter.API
 
             builder.Services.AddApplicationServices();
 
+            builder.Services.AddHealthChecks();
+
             var app = builder.Build();
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -35,8 +34,10 @@ namespace UnitConverter.API
 
             app.UseAuthorization();
 
-   
+
             app.MapControllers();
+
+            app.MapHealthChecks("/health");
 
             app.Run();
         }
