@@ -9,11 +9,6 @@ namespace UnitConverter.API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.Converters.Add(
-                    new JsonStringEnumConverter());
-                });
 
 
             services.AddScoped<IConversionService, ConversionService>();
